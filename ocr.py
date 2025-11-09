@@ -24,6 +24,9 @@ class SolutionAttempt:
     def getConfidence(self):
         return self.confidence
 
+    def toString(self):
+        return str(self.getExpressions().toString(), str(self.getConfidence()))
+
 
 # Convert returns MathPIX response
 def getPhotoData(imageURL):
@@ -41,8 +44,6 @@ def getPhotoData(imageURL):
                       )
     print(json.dumps(r.json(), indent=4, sort_keys=True))
     return r.json()
-
-
 
 def buildSolutionAttempt(response)-> SolutionAttempt:
     rawLatex = response.get("latex_styled")
